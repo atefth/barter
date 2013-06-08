@@ -1,0 +1,11 @@
+<div class="navbar navbar-static-top navbar-inverse">
+    <div class="navbar-inner">
+	    <a class="brand" href="/">Barter</a>
+	    <ul class="nav">
+		    <li class="<%= 'active' if @page == 'home' %>"><a href="/home/">Home</a></li>
+		    <li class="<%= 'active' if @page == 'about' %>"><a href="/about/">About</a></li>
+		    <li class="<%= 'active' if @page == 'contact' %>"><a href="/contact/">Contact</a></li>
+		    <li class="<%= 'active' if @page == 'register' %>"><a href="/users/new/">Register</a></li>
+	    </ul>
+    </div>
+</div>
