@@ -11,8 +11,6 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
-
-    redirect_to(:controller => 'home', :action => 'index')
   end
 
   # GET /users/new
@@ -48,16 +46,14 @@ class UsersController < ApplicationController
       redirect_to(:controller => 'user', :action => 'new')
 
     end
+   
+  end
 
-    # respond_to do |format|
-    #   if @user.save
-    #     # format.html { redirect_to @user, notice: 'You have successfully signed up! We will keep in touch.' }
-    #     # format.json { render json: @user, status: :created, location: @user }
-    #   else
-    #     # format.html { render action: "new" }
-    #     # format.json { render json: @user.errors, status: :unprocessable_entity }
-    #   end
-    # end
+  def logout
+
+    reset_session
+    redirect_to(:controller => 'home', :action => 'index')
+
   end
 
   # PUT /users/1

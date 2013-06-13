@@ -1,0 +1,154 @@
+<div class="span8 offset2">
+
+	<fieldset>
+
+		<legend><h1>Register</h1></legend>
+
+		<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:multipart => true, :class => 'form-horizontal'}) do |f| %>
+		  <%= devise_error_messages! %>
+
+		  <fieldset style="margin-left:0;" id="p_info">
+
+		    <legend>Personal Information</legend>
+
+		    <div class="control-group">
+		      <%= f.label :f_name, 'First Name', :class => 'control-label' %>
+		      <div class="controls">
+		        <%= f.text_field :f_name %>
+		      </div>
+		    </div>
+		    <div class="control-group">
+		      <%= f.label :l_name, 'Last Name', :class => 'control-label' %>
+		      <div class="controls">
+		        <%= f.text_field :l_name %>
+		      </div>
+		    </div>
+		    <div class="control-group">
+		      <%= f.label :birth_year, :class => 'control-label' %>
+		      <div class="controls">
+		        <%= f.text_field :birth_year %>
+		      </div>
+		    </div>
+		    <div class="control-group">
+		      <p class="control-label">Gender</p>
+		      <div class="span2" style="margin-left:0px;">
+		          <%= f.label :gender_male, 'Male', :class => 'control-label', :style => 'width:50px;' %>
+		          <div class="controls">
+		            <%= f.radio_button :gender, 'Male', :style => 'width:50px; margin-left:-115px; margin-top:9px;' %>
+		          </div>
+		        </div>
+		        <div class="span2">
+		          <%= f.label :gender_female, 'Female', :class => 'control-label', :style => 'width:50px;' %>
+		          <div class="controls">
+		            <%= f.radio_button :gender, 'Female', :style => 'width:50px; margin-left:-115px; margin-top:9px;' %>
+		          </div>
+		        </div>
+		    </div>
+		    <div class="control-group">
+		      <%= f.label :username, :class => 'control-label' %>
+		      <div class="controls">
+		        <%= f.text_field :username %>
+		      </div>
+		    </div>
+		    <div class="control-group">
+		      <%= f.label :password, :class => 'control-label' %>
+		      <div class="controls">
+		        <%= f.password_field :password %>
+		      </div>
+		    </div>
+		    <div class="control-group">
+		      <%= f.label :profession, :class => 'control-label' %>
+		      <div class="controls">
+		        <%= f.text_field :profession %>
+		      </div>
+		    </div>
+		    <div class="control-group">
+		      <%= f.label :image, 'Photo', :class => 'control-label' %>
+		      <div class="controls">
+		        <%= f.file_field :image %>
+		      </div>
+		    </div>
+
+		      <button class="btn btn-success" onClick="move(); return false;">Next</button>
+
+		  </fieldset>
+
+		  <fieldset style="margin-left:0;" id="c_info">
+
+		    <legend>Contact Information</legend>
+
+		    <div class="control-group">
+		      <%= f.label :email, :class => 'control-label' %>
+		      <div class="controls">
+		        <%= f.email_field :email %>
+		      </div>
+		    </div>
+		    <div class="control-group">
+		      <%= f.label :phone, :class => 'control-label' %>
+		      <div class="controls">
+		        <%= f.text_field :phone %>
+		      </div>
+		    </div>
+		    <div class="control-group">
+		      <%= f.label :area, :class => 'control-label' %>
+		      <div class="controls">
+		        <%= f.text_field :area %>
+		      </div>
+		    </div>
+		    <div class="control-group">
+		      <%= f.label :postal, 'Postal Code', :class => 'control-label' %>
+		      <div class="controls">
+		        <%= f.text_field :postal %>
+		      </div>
+		    </div>
+		    <div class="control-group">
+		      <%= f.label :city, :class => 'control-label' %>
+		      <div class="controls">
+		        <%= f.text_field :city %>
+		      </div>
+		    </div>
+		    <div class="control-group">
+		      <%= f.label :district, :class => 'control-label' %>
+		      <div class="controls">
+		        <%= f.text_field :district %>
+		      </div>
+		    </div>
+		    <div class="control-group">
+		      <%= f.label :country, :class => 'control-label' %>
+		      <div class="controls">
+		        <%= f.text_field :country %>
+		      </div>
+		    </div>
+
+		      <button class="btn btn-warning" onClick="move(); return false;">Previous</button>
+		    <div class="control-group pull-right">
+		      <%= f.submit 'Submit', :class => 'btn btn-success' %>
+		    </div>
+
+		  </fieldset>
+
+		<% end %>
+
+	</fieldset>
+
+
+</div>
+
+<script type="text/javascript">
+
+  $( document ).ready(function() {
+    $("#c_info").hide();
+  });
+
+  function move(){
+
+    $("#p_info").toggle('fast');
+    $("#c_info").toggle('fast');
+
+  }
+
+  $(function() {
+    $( "#user_birth_year" ).datepicker();
+  });
+
+</script>

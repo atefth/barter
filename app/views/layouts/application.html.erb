@@ -4,8 +4,13 @@
   <title>Barter</title>
   <%= stylesheet_link_tag    "custom", :media => "all" %>
   <%= stylesheet_link_tag    "bootstrap", :media => "all" %>
+  <%= stylesheet_link_tag    "demos", :media => "all" %>
+  <%= stylesheet_link_tag    "jquery.ui.all", :media => "all" %>
   <%= javascript_include_tag "bootstrap" %>
   <%= javascript_include_tag "jquery-1.9.0" %>
+  <%= javascript_include_tag "jquery.ui.datepicker" %>
+  <%= javascript_include_tag "jquery.ui.widget" %>
+  <%= javascript_include_tag "jquery.ui.core" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -20,7 +25,7 @@
 
 		<% end %>
 
-		<div class="span10">
+		<div class="clearfix" style="padding:10px;">
 			
 			<%= yield %>
 

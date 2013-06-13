@@ -1,9 +1,19 @@
 Barter::Application.routes.draw do
+  devise_for :users, :path_names => { :sign_up => 'new', :sign_out => 'logout', :sign_in => 'login'}
+
+  get "admin/index"
+
+  get "admin/login"
+
+  get "admin/see_users"
+
   get "contact/index"
 
   get "about/index"
 
   get "home/index"
+
+  get "users/logout"
 
   resources :users
 

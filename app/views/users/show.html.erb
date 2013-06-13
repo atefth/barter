@@ -1,70 +1,56 @@
-<p id="notice"><%= notice %></p>
+<div class="alert alert-info">
+    <h1>Profile</h1>
+</div>
 
-<p>
-  <b>F name:</b>
-  <%= @user.f_name %>
-</p>
+<div class="media span6 offset2 thumbnail" style="height:450px;">
+    <h2 class="media-heading" style="margin-left:20px;"><%= @user.f_name.to_s + ' ' + @user.l_name.to_s %></h2>
+    <a class="pull-left" style="margin-top:10px;margin-left:20px;" href="#">
+        <%= image_tag @user.image_url(:thumb).to_s, :class => 'thumbnail', :style => 'width:100px; height:100px' %>
+    </a>
+    <div class="media-body">
 
-<p>
-  <b>L name:</b>
-  <%= @user.l_name %>
-</p>
+        <div style="height:340px;">
 
-<p>
-  <b>Email:</b>
-  <%= @user.email %>
-</p>
+            <table class="table table-hover offset1 contact" style="font-size:14px;">
+                <legend class="contact">Contact Information</legend>
+                <tr><th>Email</th><td> : </td><td><%= @user.email %></td></tr>
+                <tr><th>Phone</th><td> : </td><td><%= @user.phone %></td></tr>
+                <tr><th>Area</th><td> : </td><td><%= @user.area %></td></tr>
+                <tr><th>District</th><td> : </td><td><%= @user.district %></td></tr>
+                <tr><th>City</th><td> : </td><td><%= @user.city %></td></tr>
+                <tr><th>Postal</th><td> : </td><td><%= @user.postal %></td></tr>
+                <tr><th>Country</th><td> : </td><td><%= @user.country %></td></tr>
 
-<p>
-  <b>Phone:</b>
-  <%= @user.phone %>
-</p>
+            </table>
 
-<p>
-  <b>Birth year:</b>
-  <%= @user.birth_year %>
-</p>
+            <table class="table table-hover offset1 personal" style="font-size:14px;">
+                <legend class="personal">Personal Information</legend>
+                <tr><th>Born</th><td> : </td><td><%= @user.birth_year %></td></tr>
+                <tr><th>Gender</th><td> : </td><td><%= @user.gender %></td></tr>
+                <tr><th>Profession</th><td> : </td><td><%= @user.profession %></td></tr>
+                <tr><th>Username</th><td> : </td><td><%= @user.username %></td></tr>
 
-<p>
-  <b>Gender:</b>
-  <%= @user.gender %>
-</p>
+            </table>
 
-<p>
-  <b>Profession:</b>
-  <%= @user.profession %>
-</p>
+        </div>
 
-<p>
-  <b>Image:</b>
-  <%= @user.image %>
-</p>
+        <button class="btn btn-primary pull-left" onClick="move(); return false;" style="margin-top:15px; margin-right:10px;"><</button>
+        <button class="btn btn-primary pull-right" onClick="move(); return false;" style="margin-top:15px; margin-right:10px;">></button>
 
-<p>
-  <b>Area:</b>
-  <%= @user.area %>
-</p>
+    </div>
+</div>
 
-<p>
-  <b>City:</b>
-  <%= @user.city %>
-</p>
+<script type="text/javascript">
 
-<p>
-  <b>District:</b>
-  <%= @user.district %>
-</p>
+  $( document ).ready(function() {
+    $(".personal").hide();
+  });
 
-<p>
-  <b>Country:</b>
-  <%= @user.country %>
-</p>
+  function move(){
 
-<p>
-  <b>Postal:</b>
-  <%= @user.postal %>
-</p>
+    $(".personal").toggle('fast');
+    $(".contact").toggle('fast');
 
+  }
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+</script>

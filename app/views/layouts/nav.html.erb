@@ -6,6 +6,7 @@
 		    <li class="<%= 'active' if @page == 'about' %>"><a href="/about/">About</a></li>
 		    <li class="<%= 'active' if @page == 'contact' %>"><a href="/contact/">Contact</a></li>
 		    <li class="<%= 'active' if @page == 'register' %>"><a href="/users/new/">Register</a></li>
+		    <li class="<%= 'active' if @page == 'login' %>"><% if user_signed_in? %><a href="/users/logout/">Logout<% else %><a href="/users/login/">Login<% end %></a></li>
 	    </ul>
     </div>
 </div>
