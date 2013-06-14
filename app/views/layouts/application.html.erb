@@ -13,17 +13,29 @@
   <%= javascript_include_tag "jquery.ui.core" %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body style="background-color:#B1DEC2;">
 
 	<div class="container row-fluid">
 
 		<%= render :template => 'layouts/nav' %>
 
-		<% if flash[:notice] %>
+		<% if flash[:notice]%>
 
 			<div class="alert alert-success span12" style="margin-left:0;"><%= flash[:notice] %></div>
 
 		<% end %>
+
+    <% if flash[:alert]%>
+
+      <div class="alert span12" style="margin-left:0;"><%= flash[:alert] %></div>
+
+    <% end %>
+
+    <% if flash[:warning]%>
+
+      <div class="alert alert-block span12" style="margin-left:0;"><%= flash[:warning] %></div>
+
+    <% end %>
 
 		<div class="clearfix" style="padding:10px;">
 			

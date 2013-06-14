@@ -1,5 +1,6 @@
 Barter::Application.routes.draw do
   devise_for :users, :path_names => { :sign_up => 'new', :sign_out => 'logout', :sign_in => 'login'}
+  # root to: "user/profile"
 
   get "admin/index"
 
@@ -12,8 +13,6 @@ Barter::Application.routes.draw do
   get "about/index"
 
   get "home/index"
-
-  get "users/logout"
 
   resources :users
 

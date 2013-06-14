@@ -64,4 +64,17 @@ Barter::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
+
+    config.action_mailer.default_url_options = { :host => "dev-barter.herokuapp.com" }
+    config.action_mailer.raise_delivery_errors = true
+    config.action_mailer.delivery_method = :sendmail
+    config.action_mailer.smtp_settings = {
+      :address => "atefth@gmail.com",
+      :port => 25,
+      :domain => "dev-barter.herokuapp.com",
+      :authentication => :login,
+      :user_name => "atefth@gmail.com",
+      :password => "urzjexvefretsojr",
+    }
+
 end

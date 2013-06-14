@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @page = 'profile'
     @user = User.find(params[:id])
   end
 
@@ -33,6 +34,7 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
+    params[:user][:password] = Digest::MD5.hexdigest(params[:user][:password])
     @user = User.new(params[:user])
 
     if @user.save
@@ -49,12 +51,12 @@ class UsersController < ApplicationController
    
   end
 
-  def logout
+  # def logout
 
-    reset_session
-    redirect_to(:controller => 'home', :action => 'index')
+  #   reset_session
+  #   redirect_to(:controller => 'home', :action => 'index')
 
-  end
+  # end
 
   # PUT /users/1
   # PUT /users/1.json

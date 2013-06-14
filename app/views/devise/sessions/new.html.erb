@@ -1,17 +1,50 @@
-<h2>Sign in</h2>
+<div class="span8 offset2">
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <div><%= f.label :username %><br />
-  <%= f.text_field :username, :autofocus => true %></div>
+	<fieldset>
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+		<legend><h2>Sign in</h2></legend>
 
-  <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-  <% end -%>
+		<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :class => 'form-horizontal'}) do |f| %>
+			<%= devise_error_messages! %>
+		    <div class="control-group">
+		      <%= f.label :username, :class => 'control-label' %>
+		      <div class="controls">
+		        <%= f.text_field :username %>
+		      </div>
+		    </div>
+		    <div class="control-group">
+		      <%= f.label :password, :class => 'control-label' %>
+		      <div class="controls">
+		        <%= f.password_field :password %>
+		      </div>
+		    </div>		    
 
-  <div><%= f.submit "Sign in" %></div>
-<% end %>
+		    <div class="row-fluid">
 
-<%= render "devise/shared/links" %>
+			  <div class="span4">
+
+			  	<% if devise_mapping.rememberable? -%>
+			    <div class="control-group">
+			      <%= f.label :remember_me, :class => 'control-label' %>
+			      <div class="controls">
+			        <%= f.check_box :remember_me %>
+			      </div>
+			    </div>
+		    	<% end -%>
+			  	
+			  </div>
+
+			  <div class="control-group">
+			      <%= f.submit 'Log in', :class => 'btn btn-success', :style => 'margin-left:50px;' %>
+			  </div>
+
+		  	</div>
+
+		  	<%= render "devise/shared/links" %>
+
+		<% end %>
+
+	</fieldset>
+
+
+</div>

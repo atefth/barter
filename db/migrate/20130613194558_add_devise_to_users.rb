@@ -13,11 +13,11 @@ class AddDeviseToUsers < ActiveRecord::Migration
       t.datetime :remember_created_at
 
       ## Trackable
-      t.integer  :sign_in_count, :default => 0
-      t.datetime :current_sign_in_at
-      t.datetime :last_sign_in_at
-      t.string   :current_sign_in_ip
-      t.string   :last_sign_in_ip
+      # t.integer  :sign_in_count, :default => 0
+      # t.datetime :current_sign_in_at
+      # t.datetime :last_sign_in_at
+      # t.string   :current_sign_in_ip
+      # t.string   :last_sign_in_ip
 
       ## Confirmable
       # t.string   :confirmation_token
@@ -31,7 +31,7 @@ class AddDeviseToUsers < ActiveRecord::Migration
       # t.datetime :locked_at
 
       ## Token authenticatable
-      # t.string :authentication_token
+      t.string :authentication_token
 
 
       # Uncomment below if timestamps were not included in your original model.
@@ -56,11 +56,14 @@ class AddDeviseToUsers < ActiveRecord::Migration
       t.remove :reset_password_token
       t.remove :reset_password_sent_at
       t.remove :remember_created_at
-      t.remove :sign_in_count
-      t.remove :current_sign_in_at
-      t.remove :last_sign_in_at
-      t.remove :current_sign_in_ip
-      t.remove :last_sign_in_ip
+      t.remove :authentication_token
+      
+      # Trackable
+      # t.remove :sign_in_count
+      # t.remove :current_sign_in_at
+      # t.remove :last_sign_in_at
+      # t.remove :current_sign_in_ip
+      # t.remove :last_sign_in_ip
     end
   end
 end
