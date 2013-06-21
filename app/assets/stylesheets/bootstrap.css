@@ -233,11 +233,15 @@ body {
 a {
   color: #0088cc;
   text-decoration: none;
+  font-size: 14px;
 }
 
 a:hover {
   color: #005580;
   text-decoration: underline;
+  font-size: 14px;
+  text-shadow: 1px #fff;
+
 }
 
 .img-rounded {
@@ -1023,7 +1027,7 @@ legend {
   line-height: 40px;
   color: #333333;
   border: 0;
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid #fff;
 }
 
 legend small {

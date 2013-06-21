@@ -1,4 +1,7 @@
 Barter::Application.routes.draw do
+  resources :items
+
+
   devise_for :users, :path_names => { :sign_up => 'new', :sign_out => 'logout', :sign_in => 'login'}
   # root to: "user/profile"
 

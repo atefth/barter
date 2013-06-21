@@ -1,17 +1,53 @@
-<div class="alert alert-info">
-    <h1>Profile</h1>
+<div class="alert alert-info span12">
+    <div class="span2 row-fluid">
+        <%= image_tag @user.image_url(:thumb).to_s, :class => 'thumbnail', :style => 'width:100px; height:100px; margin:20%;' %>
+    </div>
+    <div class="span10 row-fluid">
+        <div style="margin:3%;">
+            <%= form_tag :items, :method => "post", :class => "form-horizontal" %>
+            <fieldset>
+                <legend>Search</legend>
+                <div class="span12 row-fluid">                
+                    <div class="control-group span5">
+                      <%= label_tag :item_name, 'Item', :class => 'control-label' %>
+                      <div class="controls">
+                        <%= text_field_tag :item_name %>
+                      </div>
+                    </div>
+                    <div class="control-group span5">
+                      <%= label_tag :item_category, 'Category', :class => 'control-label' %>
+                      <div class="controls">
+                        <%= text_field_tag :item_category %>
+                      </div>
+                    </div>
+                    <div class="control-group span2">
+                      <%= submit_tag 'Submit', :class => 'btn btn-success' %>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </div>
 </div>
-
-<div class="media span6 offset2 thumbnail" style="height:450px;">
-    <h2 class="media-heading" style="margin-left:20px;"><%= @user.f_name.to_s + ' ' + @user.l_name.to_s %></h2>
-    <a class="pull-left" style="margin-top:10px;margin-left:20px;" href="#">
-        <%= image_tag @user.image_url(:thumb).to_s, :class => 'thumbnail', :style => 'width:100px; height:100px' %>
-    </a>
+<div class="span10 offset2 row-fluid">
+    <div class="span2" align="center">
+        <button class="btn btn-primary">Results</button>
+    </div>
+    <div class="span4" align="center">
+        <button class="btn btn-primary">My Bartae's</button>
+    </div>
+    <div class="span4" align="center">
+        <button class="btn btn-primary">My Bartee's</button>
+    </div>
+</div>
+<div class="span8 offset2 alert alert-info" style="height:600px; margin-top:1.25%;">
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+</div>
+<div class="media span8 row-fluid thumbnail" style="height:450px; visibility:hidden">
     <div class="media-body">
 
         <div style="height:340px;">
 
-            <table class="table table-hover offset1 contact" style="font-size:14px;">
+            <table class="table offset1 contact" style="font-size:14px;">
                 <legend class="contact">Contact Information</legend>
                 <tr><th>Email</th><td> : </td><td><%= @user.email %></td></tr>
                 <tr><th>Phone</th><td> : </td><td><%= @user.phone %></td></tr>

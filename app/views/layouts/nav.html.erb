@@ -4,7 +4,7 @@
 	    <ul class="nav">
 		    <li class="<%= 'active' if @page == 'home' %>"><a href="/home/">Home</a></li>
 		    <% if user_signed_in? %>
-		    	<li class="<%= 'active' if @page == 'profile' %>"><a href="/users/<%= current_user.id %>/">Profile</a></li>
+		    	<li class="<%= 'active' if @page == 'posts' %>"><a href="/posts/index/">Posts</a></li>
 		    <% else %>
 		    	<li class="<%= 'active' if @page == 'register' %>"><a href="/users/new/">Register</a></li>
 		    <% end %>
@@ -12,5 +12,8 @@
 		    <li class="<%= 'active' if @page == 'contact' %>"><a href="/contact/">Contact</a></li>
 		    <li class="<%= 'active' if @page == 'login' %>"><% if user_signed_in? %><a href="/users/logout">Logout<% else %><a href="/users/login">Login<% end %></a></li>
 	    </ul>
+	    <% if user_signed_in? %>
+	    	<a class="brand <%= 'popup' if @page == 'profile' %>" style="float:right;" href="/users/<%= current_user.id %>/"><%= current_user.f_name.to_s + ' ' + current_user.l_name.to_s %></a>
+	    <% end %>
     </div>
 </div>
