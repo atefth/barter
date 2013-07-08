@@ -1,0 +1,26 @@
+<div class="span10 offset1">
+	<table class="span10">
+		<tbody>
+			<tr style="font-size:16px;">
+				<td><b>Serial</b></td>
+				<td><b>Category</b></td>
+				<td><b>Brand</b></td>
+				<td><b>Model</b></td>
+				<td><b>Date</b></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<% @my_goods.each_with_index do |good, index| %>
+				<tr>
+					<td><em><%= index %></em></td>
+					<td><em><%= good.category %></em></td>
+					<td><em><%= good.brand %></em></td>
+					<td><em><%= good.model %></em></td>
+					<td><em><%= good.created_at %></em></td>
+					<td><a class="btn btn-success" href="/goods/<%= good.id %>/edit">Edit</a></td>
+					<td><a class="btn btn-success" href="/goods/<%= good.id %>/destroy">Delete</a></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>

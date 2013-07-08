@@ -1,0 +1,57 @@
+<%= form_for @needed_good, :html => {:multipart => true, :class => 'form-horizontal'} do |f| %>
+  <% if @needed_good.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@needed_good.errors.count, "error") %> prohibited this needed_good from being saved:</h2>
+
+    <ul>
+    <% @needed_good.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+  <fieldset>
+    <legend>Fill in the good's details</legend>
+    <div class="span8" style="margin-left:15%;">
+      <div class="input_wrapper">
+        <%= f.label :category, :class => 'input_label' %>
+        <div class="input">
+          <%= f.text_field :category %>
+        </div>
+      </div>
+      <div class="input_wrapper">
+        <%= f.label :brand, :class => 'input_label' %>
+        <div class="input">
+          <%= f.text_field :brand %>
+        </div>
+      </div>
+      <div class="input_wrapper">
+        <%= f.label :model, :class => 'input_label' %>
+        <div class="input">
+          <%= f.text_field :model %>
+        </div>
+      </div>
+      <div class="input_wrapper">
+        <%= f.label :area, :class => 'input_label' %>
+        <div class="input">
+          <%= f.text_field :area %>
+        </div>
+      </div>
+      <div class="input_wrapper">
+        <%= f.label :city, :class => 'input_label' %>
+        <div class="input">
+          <%= f.text_field :city %>
+        </div>
+      </div>
+      <div class="input_wrapper">
+        <%= f.label :country, :class => 'input_label' %>
+        <div class="input">
+          <%= f.text_field :country %>
+        </div>
+      </div>
+      <div class="input_wrapper pull-right">
+        <%= f.submit 'Submit', :class => 'btn btn-success' %>
+      </div>
+    </div>
+  </fieldset>
+<% end %>

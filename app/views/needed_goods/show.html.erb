@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Category:</b>
+  <%= @needed_good.category %>
+</p>
+
+<p>
+  <b>Brand:</b>
+  <%= @needed_good.brand %>
+</p>
+
+<p>
+  <b>Model:</b>
+  <%= @needed_good.model %>
+</p>
+
+<p>
+  <b>Area:</b>
+  <%= @needed_good.area %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%= @needed_good.city %>
+</p>
+
+<p>
+  <b>Country:</b>
+  <%= @needed_good.country %>
+</p>
+
+<%= link_to 'Edit', edit_needed_good_path(@needed_good) %> |
+<%= link_to 'Back', needed_goods_path %>

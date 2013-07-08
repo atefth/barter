@@ -1,4 +1,13 @@
 Barter::Application.routes.draw do
+  resources :messages
+
+
+  resources :needed_goods
+
+
+  resources :goods
+
+
   resources :items
 
 
@@ -16,6 +25,10 @@ Barter::Application.routes.draw do
   get "about/index"
 
   get "home/index"
+
+  get "users/signup"
+
+  get "assets/images"
 
   resources :users
 

@@ -26,6 +26,18 @@ class UsersController < ApplicationController
     end
   end
 
+  def signup
+    @user = User.new
+    @user.email = params[:email]
+    @user.username = params[:username]
+    @user.password = Digest::MD5.hexdigest(params[:password])
+    @user.save
+    flash[:notice] = "Please complete your profile."
+    sign_in(User, @user)
+    redirect_to(:action => "edit", :id => @user.id)
+
+  end
+
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
@@ -36,7 +48,8 @@ class UsersController < ApplicationController
   def create
     params[:user][:password] = Digest::MD5.hexdigest(params[:user][:password])
     @user = User.new(params[:user])
-
+    fullname = params[:user][:f_name] + ' ' + params[:user][:l_name]
+    @user.fullname = fullname
     if @user.save
 
       flash[:notice] = 'Thank you for signing up at Barter.com. We\'ll keep you updated as soon as we have more to offer.'
@@ -62,7 +75,8 @@ class UsersController < ApplicationController
   # PUT /users/1.json
   def update
     @user = User.find(params[:id])
-
+    fullname = params[:user][:f_name] + ' ' + params[:user][:l_name]
+    @user.fullname = fullname
     respond_to do |format|
       if @user.update_attributes(params[:user])
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
@@ -79,7 +93,7 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-
+    
     respond_to do |format|
       format.html { redirect_to users_url }
       format.json { head :no_content }

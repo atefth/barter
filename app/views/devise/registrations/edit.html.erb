@@ -1,17 +1,14 @@
+<% @page = 'edit' %>
 <div class="span8 offset2">
 
   <fieldset>
 
-    <legend><h2>Edit <%= resource_name.to_s.humanize %></h2></legend>
+    <legend><h2>Register</h2></legend>
 
-    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:multipart => true, :class => 'form-horizontal'}) do |f| %>
       <%= devise_error_messages! %>
 
-      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-      <% end %>
-
-        <fieldset style="margin-left:0;" id="p_info">
+      <fieldset style="margin-left:0;" id="p_info">
 
         <legend>Personal Information</legend>
 
@@ -47,6 +44,24 @@
                 <%= f.radio_button :gender, 'Female', :style => 'width:50px; margin-left:-115px; margin-top:9px;' %>
               </div>
             </div>
+        </div>
+        <div class="control-group">
+          <%= f.label :username, :class => 'control-label' %>
+          <div class="controls">
+            <%= f.text_field :username %>
+          </div>
+        </div>
+        <div class="control-group">
+          <%= f.label :password, :class => 'control-label' %>
+          <div class="controls">
+            <%= f.password_field :password %>
+          </div>
+        </div>
+        <div class="control-group">
+          <%= f.label :password_confirmation, :class => 'control-label' %>
+          <div class="controls">
+            <%= f.password_field :password_confirmation %>
+          </div>
         </div>
         <div class="control-group">
           <%= f.label :profession, :class => 'control-label' %>
@@ -114,19 +129,33 @@
 
           <button class="btn btn-warning" onClick="move(); return false;">Previous</button>
         <div class="control-group pull-right">
-          <%= f.submit 'Update', :class => 'btn btn-success' %>
+          <%= f.submit 'Submit', :class => 'btn btn-success' %>
         </div>
 
       </fieldset>
+
     <% end %>
-
-    <h3>Cancel my account</h3>
-
-    <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %></p>
-
-    <%= link_to "Back", :back %>
 
   </fieldset>
 
 
 </div>
+
+<script type="text/javascript">
+
+  $( document ).ready(function() {
+    $("#c_info").hide();
+  });
+
+  function move(){
+
+    $("#p_info").toggle('fast');
+    $("#c_info").toggle('fast');
+
+  }
+
+  $(function() {
+    $( "#user_birth_year" ).datepicker();
+  });
+
+</script>

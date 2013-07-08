@@ -1,0 +1,32 @@
+<div class="span10 offset1">
+	<table class="span10">
+		<tbody>
+			<tr style="font-size:16px;">
+				<td><b>Serial</b></td>
+				<td><b>Category</b></td>
+				<td><b>Brand</b></td>
+				<td><b>Model</b></td>
+				<td><b>Area</b></td>
+				<td><b>City</b></td>
+				<td><b>Country</b></td>
+				<td><b>Date</b></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<% @my_needed_goods.each_with_index do |needed_good, index| %>
+				<tr>
+					<td><em><%= index %></em></td>
+					<td><em><%= needed_good.category %></em></td>
+					<td><em><%= needed_good.brand %></em></td>
+					<td><em><%= needed_good.model %></em></td>
+					<td><em><%= needed_good.area %></em></td>
+					<td><em><%= needed_good.city %></em></td>
+					<td><em><%= needed_good.country %></em></td>
+					<td><em><%= needed_good.created_at %></em></td>
+					<td><a class="btn btn-success" href="/needed_goods/<%= needed_good.id %>/edit">Edit</a></td>
+					<td><a class="btn btn-success" href="/needed_goods/<%= needed_good.id %>/destroy">Delete</a></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>

@@ -1,79 +1,8 @@
-<div class="alert alert-info span12">
-    <div class="span2 row-fluid">
-        <%= image_tag @user.image_url(:thumb).to_s, :class => 'thumbnail', :style => 'width:100px; height:100px; margin:20%;' %>
-    </div>
-    <div class="span10 row-fluid">
-        <div style="margin:3%;">
-            <%= form_tag :items, :method => "post", :class => "form-horizontal" %>
-            <fieldset>
-                <legend>Search</legend>
-                <div class="span12 row-fluid">                
-                    <div class="control-group span5">
-                      <%= label_tag :item_name, 'Item', :class => 'control-label' %>
-                      <div class="controls">
-                        <%= text_field_tag :item_name %>
-                      </div>
-                    </div>
-                    <div class="control-group span5">
-                      <%= label_tag :item_category, 'Category', :class => 'control-label' %>
-                      <div class="controls">
-                        <%= text_field_tag :item_category %>
-                      </div>
-                    </div>
-                    <div class="control-group span2">
-                      <%= submit_tag 'Submit', :class => 'btn btn-success' %>
-                    </div>
-                </div>
-            </fieldset>
-        </div>
-    </div>
+<div class="span2 logo_bg">
+    <%= image_tag 'logo.png', :style => "margin-top: -15px; height: 225px;" %>
 </div>
-<div class="span10 offset2 row-fluid">
-    <div class="span2" align="center">
-        <button class="btn btn-primary">Results</button>
-    </div>
-    <div class="span4" align="center">
-        <button class="btn btn-primary">My Bartae's</button>
-    </div>
-    <div class="span4" align="center">
-        <button class="btn btn-primary">My Bartee's</button>
-    </div>
-</div>
-<div class="span8 offset2 alert alert-info" style="height:600px; margin-top:1.25%;">
-    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-</div>
-<div class="media span8 row-fluid thumbnail" style="height:450px; visibility:hidden">
-    <div class="media-body">
-
-        <div style="height:340px;">
-
-            <table class="table offset1 contact" style="font-size:14px;">
-                <legend class="contact">Contact Information</legend>
-                <tr><th>Email</th><td> : </td><td><%= @user.email %></td></tr>
-                <tr><th>Phone</th><td> : </td><td><%= @user.phone %></td></tr>
-                <tr><th>Area</th><td> : </td><td><%= @user.area %></td></tr>
-                <tr><th>District</th><td> : </td><td><%= @user.district %></td></tr>
-                <tr><th>City</th><td> : </td><td><%= @user.city %></td></tr>
-                <tr><th>Postal</th><td> : </td><td><%= @user.postal %></td></tr>
-                <tr><th>Country</th><td> : </td><td><%= @user.country %></td></tr>
-
-            </table>
-
-            <table class="table table-hover offset1 personal" style="font-size:14px;">
-                <legend class="personal">Personal Information</legend>
-                <tr><th>Born</th><td> : </td><td><%= @user.birth_year %></td></tr>
-                <tr><th>Gender</th><td> : </td><td><%= @user.gender %></td></tr>
-                <tr><th>Profession</th><td> : </td><td><%= @user.profession %></td></tr>
-                <tr><th>Username</th><td> : </td><td><%= @user.username %></td></tr>
-
-            </table>
-
-        </div>
-
-        <button class="btn btn-primary pull-left" onClick="move(); return false;" style="margin-top:15px; margin-right:10px;"><</button>
-        <button class="btn btn-primary pull-right" onClick="move(); return false;" style="margin-top:15px; margin-right:10px;">></button>
-
-    </div>
+<div class="span2 pp_bg">
+    <%= image_tag @user.image_url(:thumb).to_s, :class => 'img-circle' %>
 </div>
 
 <script type="text/javascript">

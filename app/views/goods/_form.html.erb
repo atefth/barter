@@ -1,0 +1,93 @@
+<%= form_for @good, :html => {:multipart => true, :class => 'form-horizontal'} do |f| %>
+  <% if @good.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@good.errors.count, "error") %> prohibited this good from being saved:</h2>
+
+    <ul>
+    <% @good.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+  <fieldset>
+    <legend>Fill in the good's details</legend>
+    <div class="span8" style="margin-left:15%;">
+      <div class="input_wrapper">
+        <%= f.label :category, :class => 'input_label' %>
+        <div class="input">
+          <%= f.text_field :category %>
+        </div>
+      </div>
+      <div class="input_wrapper">
+        <%= f.label :brand, :class => 'input_label' %>
+        <div class="input">
+          <%= f.text_field :brand %>
+        </div>
+      </div>
+      <div class="input_wrapper">
+        <%= f.label :model, :class => 'input_label' %>
+        <div class="input">
+          <%= f.text_field :model %>
+        </div>
+      </div>
+      <div class="input_wrapper">
+        <%= f.label :description, :class => 'input_label' %>
+        <div class="input">
+          <%= f.text_area :description %>
+        </div>
+      </div>
+      <div class="input_wrapper">
+        <%= f.label :image, 'Cover Photo', :class => 'input_label' %>
+        <div class="input">
+          <%= f.file_field :image %>
+        </div>
+      </div>
+      <div class="input_wrapper">
+        <%= f.label :image_1, 'Another Image', :class => 'input_label' %>
+        <div class="input">
+          <%= f.file_field :image_1 %>
+        </div>
+      </div>
+      <div class="input_wrapper">
+        <%= f.label :image_2, 'Another Image', :class => 'input_label' %>
+        <div class="input">
+          <%= f.file_field :image_2 %>
+        </div>
+      </div>
+      <div class="input_wrapper">
+        <%= f.label :image_3, 'Another Image', :class => 'input_label' %>
+        <div class="input">
+          <%= f.file_field :image_3 %>
+        </div>
+      </div>
+      <div class="input_wrapper">
+        <%= f.label :image_4, 'Another Image', :class => 'input_label' %>
+        <div class="input">
+          <%= f.file_field :image_4 %>
+        </div>
+      </div>
+      <div class="input_wrapper">
+        <%= f.label :image_5, 'Another Image', :class => 'input_label' %>
+        <div class="input">
+          <%= f.file_field :image_5 %>
+        </div>
+      </div>
+      <div class="input_wrapper">
+        <%= f.label :image_6, 'Another Image', :class => 'input_label' %>
+        <div class="input">
+          <%= f.file_field :image_6 %>
+        </div>
+      </div>
+      <div class="input_wrapper">
+        <%= f.label :image_7, 'Another Image', :class => 'input_label' %>
+        <div class="input">
+          <%= f.file_field :image_7 %>
+        </div>
+      </div>
+      <div class="input_wrapper pull-right">
+        <%= f.submit 'Submit', :class => 'btn btn-success' %>
+      </div>
+    </div>
+  </fieldset>
+<% end %>

@@ -1,0 +1,23 @@
+<%= form_for(@message) do |f| %>
+  <% if @message.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@message.errors.count, "error") %> prohibited this message from being saved:</h2>
+
+      <ul>
+      <% @message.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="input_wrapper">
+    <h4 style="float:left; margin-top: 5%; margin-right:5%;margin-left:5%;">Send To<h4>
+    <input name="message[to]" type="text" data-source='<%== @users %>' data-items="4" data-provide="typeahead" class="input" style="float:left;">
+  </div>
+  <div class="text_area_input_wrapper">
+    <%= f.text_area :body, :placeholder => 'Compose a new message', :class => 'text_area_input' %>
+  </div>
+  <div class="input_wrapper">
+    <%= f.submit 'Send', :class => 'btn btn-success', :style => 'margin-left:5%;' %>
+  </div>
+<% end %>

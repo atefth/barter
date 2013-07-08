@@ -1,5 +1,86 @@
-<div class="lead">
-
-	<h1>Welcome to Barter</h1>
-
+<div class="span2 logo_bg">
+    <%= image_tag 'logo.png', :style => "margin-top: -15px; height: 225px;" %>
 </div>
+<div class="span2 pp_bg">
+    <%= image_tag current_user.image_url(:thumb).to_s, :class => 'img-circle' %>
+</div>
+<div id="for_search">
+	<div class="span10" style="margin-left:5%;margin-top:3%;">  
+	    <div class="span10">
+	        <%= render 'layouts/search' %>
+	    </div>
+	</div>
+</div>
+<div id="for_upload" class="hide">
+	<div class="span10" style="margin-left:5%;margin-top:3%;">  
+	    <div class="span10">
+	        <%= render 'goods/form' %>
+	    </div>
+	</div>
+</div>
+<div id="for_needs" class="hide">
+	<div class="span10" style="margin-left:5%;margin-top:3%;">  
+	    <div class="span10">
+	        <%= render 'needed_goods/form' %>
+	    </div>
+	</div>
+</div>
+<div id="tabs">
+	<div class="span12" style="margin-left:0px;margin-top:4%;">
+	    <div style="margin-bottom: 18px;" class="tabbable">
+	        <ul class="nav nav-tabs">
+	            <li id="search_tab" class="active"><a data-toggle="tab" onclick="show_search(); return false;" href="#tab1">Search Results</a></li>
+	            <li id="my_uploads" class=""><a data-toggle="tab" onclick="show_upload(); return false;" href="#tab2">My Uploads</a></li>
+	            <li class=""><a data-toggle="tab" onclick="show_needs(); return false;" href="#tab3">My Needs</a></li>
+	        </ul>
+	        <div style="padding-bottom: 9px; border-bottom: 1px solid #ddd;" class="tab-content">
+	            <div id="tab1" class="tab-pane active">
+	                <h2>Results</h2>
+	            </div>
+	            <div id="tab2" class="tab-pane">
+	                <h2>Goods Uploaded</h2>
+	                <%= render 'goods/uploads' %>
+	            </div>
+	            <div id="tab3" class="tab-pane">
+	                <h2>Goods Needed</h2>
+	                <%= render 'needed_goods/needed_goods' %>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	function hide_search(){
+		$("#for_search").slideUp("slow");
+	}
+	function show_search(){
+		$("#for_search").slideDown("slow");
+		hide_upload();
+		hide_needs();
+	}
+	function hide_upload(){
+		$("#for_upload").slideUp("slow");
+	}
+	function show_upload(){
+		$("#for_upload").slideDown("slow");
+		hide_search();
+		hide_needs();
+	}
+	function hide_needs(){
+		$("#for_needs").slideUp("slow");
+	}
+	function show_needs(){
+		$("#for_needs").slideDown("slow");
+		hide_search();
+		hide_upload();
+	}
+</script>
+
+<% if flash[:notice] == "You have uploaded a new good!" %>
+	<script type="text/javascript">
+	$("#my_uploads").toggleClass("active");
+	$("#search_tab").toggleClass("active");
+	show_upload();
+	</script>
+<% end %>

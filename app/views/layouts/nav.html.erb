@@ -1,19 +1,31 @@
-<div class="navbar navbar-static-top navbar-inverse">
-    <div class="navbar-inner">
-	    <a class="brand" href="/">Barter</a>
-	    <ul class="nav">
-		    <li class="<%= 'active' if @page == 'home' %>"><a href="/home/">Home</a></li>
-		    <% if user_signed_in? %>
-		    	<li class="<%= 'active' if @page == 'posts' %>"><a href="/posts/index/">Posts</a></li>
-		    <% else %>
-		    	<li class="<%= 'active' if @page == 'register' %>"><a href="/users/new/">Register</a></li>
-		    <% end %>
-		    <li class="<%= 'active' if @page == 'about' %>"><a href="/about/">About</a></li>
-		    <li class="<%= 'active' if @page == 'contact' %>"><a href="/contact/">Contact</a></li>
-		    <li class="<%= 'active' if @page == 'login' %>"><% if user_signed_in? %><a href="/users/logout">Logout<% else %><a href="/users/login">Login<% end %></a></li>
-	    </ul>
-	    <% if user_signed_in? %>
-	    	<a class="brand <%= 'popup' if @page == 'profile' %>" style="float:right;" href="/users/<%= current_user.id %>/"><%= current_user.f_name.to_s + ' ' + current_user.l_name.to_s %></a>
-	    <% end %>
-    </div>
-</div>
+<% if user_signed_in? %>
+	<div class="navbar navbar-static-top navbar-inverse">
+	    <div class="navbar-inner">
+		    <a class="brand" href="/">Barter</a>
+		    <ul class="nav pull-right">
+			    <li class="<%= 'active' if @page == 'home' %>"><a href="/home/">Home</a></li>
+			    <li class="<%= 'active' if @page == 'message' %>"><a href="/messages/">Messages</a></li>
+			    <li>
+					<div class="btn-group">
+						<a href="/users/show/<%= current_user.id %>" class="btn btn-primary <%= 'active' if @page == 'profile' %>"><i class="icon-user icon-white"></i>Profile</a>
+						<a href="#" data-toggle="dropdown" class="btn btn-primary dropdown-toggle"><span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="#"><i class="icon-pencil"></i> Edit</a></li>
+							<li><a href="#"><i class="icon-trash"></i> Delete</a></li>
+							<li><a href="#"><i class="icon-ban-circle"></i> Ban</a></li>
+							<li class="divider"></li>
+							<li><a href="#"><i class="i"></i> Make admin</a></li>
+						</ul>
+					</div>
+				</li>
+			    <li class="<%= 'active' if @page == 'login' %>">
+			    	<% if user_signed_in? %>
+			    		<a href="/users/logout">Logout
+			    	<% else %>
+			    		<a href="/users/login">Login
+			    	<% end %>
+			    </a></li>
+		    </ul>
+	    </div>
+	</div>
+<% end %>

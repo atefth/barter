@@ -1,0 +1,50 @@
+<%= form_tag('/goods/search', :method => "post", :class => "form-horizontal") do %>
+    <fieldset>
+        <legend>Search</legend>
+        <div class="" style="margin-left:6.5%;">
+        	<div class="span8">
+	        	<div class="span10">
+					<div class="search span2">
+						<%= text_field_tag :brand, nil,:placeholder => 'Enter Brand Name', :style => 'width:150px;' %>
+					</div>
+					<div class="search span2">
+						<%= text_field_tag :category, nil,:placeholder => 'Enter Category Name', :style => 'width:150px;' %>
+					</div>
+					<div class="search span2">
+						<%= text_field_tag :model, nil,:placeholder => 'Enter Model Name', :style => 'width:150px;' %>
+					</div>
+				</div>
+				<div class="span10 hide" id="advanced">
+					<div class="search span2">
+						<%= text_field_tag :brand, nil,:placeholder => 'Enter Area', :style => 'width:150px;' %>
+					</div>
+					<div class="search span2">
+						<%= text_field_tag :category, nil,:placeholder => 'Enter District', :style => 'width:150px;' %>
+					</div>
+					<div class="search span2">
+						<%= text_field_tag :model, nil,:placeholder => 'Enter Country', :style => 'width:150px;' %>
+					</div>
+				</div>
+			</div>
+			<div class="span2" style="margin-left:10.25%;">
+        		<%= submit_tag 'Search', :class => 'btn btn-success search', :style => 'margin-top:7%;' %>
+        	</div>
+        	<div class="span2" style="margin-left:41.5%;">
+        		<button onclick="advanced();return false;" class="btn btn-success search" id="advanced_button" style="margin-top:7%;">Filter More</button>
+        	</div>
+        </div>
+    </fieldset>
+<% end %>
+
+<script type="text/javascript">
+function advanced(){
+
+	$("#advanced").toggle("slow");
+	if($("#advanced_button").html() == "Filter More"){
+		$("#advanced_button").text("Filter Less");
+	}else{
+		$("#advanced_button").text("Filter More");
+	}
+
+}
+</script>

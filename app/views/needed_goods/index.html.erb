@@ -1,0 +1,33 @@
+<h1>Listing needed_goods</h1>
+
+<table>
+  <tr>
+    <th>Category</th>
+    <th>Brand</th>
+    <th>Model</th>
+    <th>Area</th>
+    <th>City</th>
+    <th>Country</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @needed_goods.each do |needed_good| %>
+  <tr>
+    <td><%= needed_good.category %></td>
+    <td><%= needed_good.brand %></td>
+    <td><%= needed_good.model %></td>
+    <td><%= needed_good.area %></td>
+    <td><%= needed_good.city %></td>
+    <td><%= needed_good.country %></td>
+    <td><%= link_to 'Show', needed_good %></td>
+    <td><%= link_to 'Edit', edit_needed_good_path(needed_good) %></td>
+    <td><%= link_to 'Destroy', needed_good, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New needed_Good', new_needed_good_path %>

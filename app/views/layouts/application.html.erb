@@ -5,45 +5,46 @@
   <%= stylesheet_link_tag    "custom", :media => "all" %>
   <%= stylesheet_link_tag    "bootstrap", :media => "all" %>
   <%= stylesheet_link_tag    "demos", :media => "all" %>
-  <%= stylesheet_link_tag    "jquery.ui.all", :media => "all" %>
-  <%= javascript_include_tag "bootstrap" %>
-  <%= javascript_include_tag "jquery-1.9.0" %>
-  <%= javascript_include_tag "jquery.ui.datepicker" %>
-  <%= javascript_include_tag "jquery.ui.widget" %>
-  <%= javascript_include_tag "jquery.ui.core" %>
+  <%= stylesheet_link_tag    "jquery.ui.all", :media => "all" %>  
+  <%= javascript_include_tag "jquery-1.9.0.js" %>
+  <%= javascript_include_tag "bootstrap.js" %>
+  <%= javascript_include_tag "jquery.ui.datepicker.js" %>
+  <%= javascript_include_tag "jquery.ui.widget.js" %>
+  <%= javascript_include_tag "jquery.ui.core.js" %>
   <%= csrf_meta_tags %>
 </head>
-<body style="background-color:#B1DEC2;">
+<body style="background-color:#fff;">
 
-	<div class="container row-fluid">
+	<div class="container">
 
-		<%= render :template => 'layouts/nav' %>
+    <% if flash[:notice]%>
 
-		<% if flash[:notice]%>
+      <div class="alert alert-success" style="margin:0;"><%= flash[:notice] %></div>
 
-			<div class="alert alert-success span12" style="margin-left:0;"><%= flash[:notice] %></div>
-
-		<% end %>
+    <% end %>
 
     <% if flash[:alert]%>
 
-      <div class="alert span12" style="margin-left:0;"><%= flash[:alert] %></div>
+      <div class="alert span12" style="margin:0;"><%= flash[:alert] %></div>
 
     <% end %>
 
     <% if flash[:warning]%>
 
-      <div class="alert alert-block span12" style="margin-left:0;"><%= flash[:warning] %></div>
+      <div class="alert alert-block" style="margin:0;"><%= flash[:warning] %></div>
 
     <% end %>
 
-		<div class="clearfix" style="padding:10px;">
-			
-			<%= yield %>
+    <%= render :template => 'layouts/nav' %>
+
+    <div class="clearfix" style="padding:10px;">
+  			
+  		<%= yield %>
 
 		</div>
 
 	</div>
 
 </body>
+
 </html>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130621192907) do
+ActiveRecord::Schema.define(:version => 20130708213113) do
 
   create_table "admins", :force => true do |t|
     t.string   "name"
@@ -22,13 +22,50 @@ ActiveRecord::Schema.define(:version => 20130621192907) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "items", :force => true do |t|
-    t.string   "name"
-    t.text     "description"
+  create_table "comments", :force => true do |t|
+    t.text     "comment"
+    t.integer  "user_id"
+    t.integer  "good_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "goods", :force => true do |t|
     t.string   "category"
-    t.integer  "rating"
+    t.string   "brand"
+    t.string   "model"
+    t.text     "description"
+    t.string   "image"
+    t.integer  "user_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.string   "image_1"
+    t.string   "image_2"
+    t.string   "image_3"
+    t.string   "image_4"
+    t.string   "image_5"
+    t.string   "image_6"
+    t.string   "image_7"
+  end
+
+  create_table "messages", :force => true do |t|
+    t.string   "body"
+    t.integer  "from"
+    t.integer  "to"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "needed_goods", :force => true do |t|
+    t.string   "category"
+    t.string   "brand"
+    t.string   "model"
+    t.string   "area"
+    t.string   "city"
+    t.string   "country"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|
@@ -53,6 +90,7 @@ ActiveRecord::Schema.define(:version => 20130621192907) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string   "authentication_token"
+    t.string   "fullname"
   end
 
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
