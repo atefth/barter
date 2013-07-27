@@ -3,19 +3,77 @@
 	    <div class="navbar-inner">
 		    <a class="brand" href="/">Barter</a>
 		    <ul class="nav pull-right">
-			    <li class="<%= 'active' if @page == 'home' %>"><a href="/home/">Home</a></li>
-			    <li class="<%= 'active' if @page == 'message' %>"><a href="/messages/">Messages</a></li>
-			    <li>
-					<div class="btn-group">
-						<a href="/users/show/<%= current_user.id %>" class="btn btn-primary <%= 'active' if @page == 'profile' %>"><i class="icon-user icon-white"></i>Profile</a>
-						<a href="#" data-toggle="dropdown" class="btn btn-primary dropdown-toggle"><span class="caret"></span></a>
+		    	<li>
+		    		<div style="margin: 25%;">
+						<a href="#" data-toggle="dropdown"><i class="icon-user"></i><span class="notifications"><% if @pending_requests.size == 0 %><b><% else %><b style="color:white;"><% end %><%= @pending_requests.size %></b></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="#"><i class="icon-pencil"></i> Edit</a></li>
-							<li><a href="#"><i class="icon-trash"></i> Delete</a></li>
-							<li><a href="#"><i class="icon-ban-circle"></i> Ban</a></li>
-							<li class="divider"></li>
-							<li><a href="#"><i class="i"></i> Make admin</a></li>
+							<% @pending_requests.each do |request| %>
+								<li><a href="/users/buddies/"><%= request.user.fullname + ' wants to be your buddy!' %></a></li>
+							<% end %>
+							<% @accepted_requests.each do |request| %>
+								<li><a href="/users/buddy_accepted/<%= request.id %>"><%= request.buddy.fullname + ' approved you as a buddy!' %></a></li>
+							<% end %>
+							<% @rejected_requests.each do |request| %>
+								<li><a href="/users/buddies/"><%= request.buddy.fullname + ' rejected you as a buddy!' %></a></li>
+							<% end %>
+							<li><a href="/messages/">My Buddylist</a></li>
 						</ul>
+					</div>
+				</li>
+				<li>
+		    		<div style="margin: 25%;">
+						<a href="#" data-toggle="dropdown"><i class="icon-envelope"></i><span class="notifications"><% if @unseen_messages.size == 0 %><b><% else %><b style="color:white;"><% end %><%= @unseen_messages.size %></b></span></a>
+						<ul class="dropdown-menu">
+							<% @unseen_messages.each do |message| %>
+								<li>
+									<div class="nav-message">
+										<p class="nav-message-body">
+											<%= User.find(message.from).fullname + ' : '%>
+											<%= '" ' + truncate(message.body.to_s, length:25) + ' "' %>
+											<a href="/messages/<%= message.id%>">View</a>
+										</p>
+									</div>
+								</li>
+							<% end %>
+							<li><a href="/messages/">All Messages</a></li>
+						</ul>
+					</div>
+				</li>
+		    	<li>
+		    		<div style="margin: 25%;">
+						<a href="#" data-toggle="dropdown"><i class="icon-bell"></i><span class="notifications"><% if @notifications.size == 0 and @notifieds.size == 0 %><b><% else %><b style="color:white;"><% end %><%= @notifications.size + @notifieds.size %></b></span></a>
+						<ul class="dropdown-menu">
+							<% @notifications.each do |notification| %>
+								<li>
+									<div>
+										<a class="nav-notification-details" href="/users/show/<%= notification.uploader.id%>/"><%= notification.uploader.fullname %></a><%= ' can barter a ' + notification.good.brand + ' ' %><a class="nav-notification-details" href="/goods/show/<%= notification.good.id %>/"><%= notification.good.model %></a>
+									</div>
+								</li>
+							<% end %>
+							<% @notifieds.each do |notification| %>
+								<li>
+									<div>
+										<a class="nav-notification-details" href="/users/show/<%= notification.user.id%>/"><%= notification.user.fullname %></a><%= ' wants a ' + notification.good.brand + ' ' %><a class="nav-notification-details" href="/goods/show/<%= notification.good.id %>/"><%= notification.good.model %></a>
+									</div>
+								</li>
+							<% end %>
+							<li><a href="/users/notifications">All Notifications</a></li>
+						</ul>
+					</div>
+				</li>
+			    <li class="<%= 'active' if @page == 'home' %>"><a href="/home/">Home</a></li>
+			    <li class="<%= 'active' if @page == 'profile' %>">
+					<a href="/users/show/<%= current_user.id %>">Profile</a>
+				</li>
+				<li>
+					<div style="margin-left:5px;">
+						<a href="#" data-toggle="dropdown" class="btn btn-primary dropdown-toggle"><span class="caret"></span></a>
+							<ul class="dropdown-menu" style="left:135px;">
+								<li><a href="/users/edit/<%= current_user.id %>"><i class="icon-pencil"></i> Edit</a></li>
+								<li><a href="/users/destroy/<%= current_user.id %>"><i class="icon-trash"></i> Delete</a></li>
+								<li class="divider"></li>
+								<li><a href="#"><i class="i"></i> Provide Service</a></li>
+							</ul>
 					</div>
 				</li>
 			    <li class="<%= 'active' if @page == 'login' %>">

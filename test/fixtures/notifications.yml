@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  buddies_good_upload: false
+  matched_good: false
+  seen: false
+
+two:
+  buddies_good_upload: false
+  matched_good: false
+  seen: false

@@ -5,6 +5,8 @@
     <%= image_tag @user.image_url(:thumb).to_s, :class => 'img-circle' %>
 </div>
 
+<%= gmaps4rails(@user_map) %>
+
 <script type="text/javascript">
 
   $( document ).ready(function() {

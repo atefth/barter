@@ -11,8 +11,21 @@
   <%= javascript_include_tag "jquery.ui.datepicker.js" %>
   <%= javascript_include_tag "jquery.ui.widget.js" %>
   <%= javascript_include_tag "jquery.ui.core.js" %>
+  <%= stylesheet_link_tag 'gmaps4rails' %>
   <%= csrf_meta_tags %>
+  <script type="text/javascript" src="//google-maps-utility-library-v3.googlecode.com/svn/tags/infobox/1.1.9/src/infobox_packed.js"></script>
+  <script src="/assets/gmaps4rails/gmaps4rails.base.js?body=1" type="text/javascript"></script>
+  <script src="/assets/gmaps4rails/gmaps4rails.bing.js?body=1" type="text/javascript"></script>
+  <script src="/assets/gmaps4rails/gmaps4rails.googlemaps.js?body=1" type="text/javascript"></script>
+  <script src="/assets/gmaps4rails/gmaps4rails.mapquest.js?body=1" type="text/javascript"></script>
+  <script src="/assets/gmaps4rails/gmaps4rails.openlayers.js?body=1" type="text/javascript"></script>
 </head>
+<% @notifieds = current_user.notifieds.unseen unless !user_signed_in? %>
+<% @notifications = current_user.notifications.unseen unless !user_signed_in? %>
+<% @pending_requests = current_user.received_buddy_requests.pending unless !user_signed_in? %>
+<% @accepted_requests = current_user.received_buddy_requests.accepted unless !user_signed_in? %>
+<% @rejected_requests = current_user.received_buddy_requests.rejected unless !user_signed_in? %>
+<% @unseen_messages = current_user.received_messages.unseen unless !user_signed_in? %>
 <body style="background-color:#fff;">
 
 	<div class="container">
@@ -46,5 +59,7 @@
 	</div>
 
 </body>
+
+<footer><%= yield :scripts %></footer>
 
 </html>

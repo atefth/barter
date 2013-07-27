@@ -8,7 +8,7 @@ class MessagesController < ApplicationController
     @received_messages = current_user.received_messages
     users = Array.new
     User.all.each do |user|
-      users << user.fullname
+      users << user.fullname unless user == current_user
     end
     @users = users.to_json
   end
@@ -17,7 +17,7 @@ class MessagesController < ApplicationController
   # GET /messages/1.json
   def show
     @message = Message.find(params[:id])
-
+    @message.update_attributes(:seen => true)
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @message }
@@ -43,9 +43,10 @@ class MessagesController < ApplicationController
   # POST /messages
   # POST /messages.json
   def create
-    params[:message][:to] = User.find_by_fullname(params[:message][:to]).first.id
+    params[:message][:to] = User.find_by_fullname(params[:message][:to]).id
     @message = Message.new(params[:message])
     @message.from = current_user.id
+    @message.seen = false
     if @message.save
       flash[:notice] = "Message sent"
     else

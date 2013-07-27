@@ -1,3 +1,29 @@
 <div class="span8 offset2">
-  <%= render 'form' %>  
+	<%= render 'form' %>  
+</div>
+<div class="span8 offset2">
+	
+    <ul id="myTab" class="nav nav-tabs">
+      <li class=""><a href="#sent" data-toggle="tab">Sent Messages</a></li>
+      <li class="active"><a href="#received" data-toggle="tab">Received Messages</a></li>
+    </ul>
+    <div id="myTabContent" class="tab-content">
+      <div class="tab-pane fade active in" id="received">
+      	<% if !@received_messages.empty? %>
+	        <% @received_messages.each do |message| %>
+	        	<h5><%= User.find(message.from).fullname %></h5>
+	        	<pre><%= message.body %></pre>
+	        <% end %>
+        <% end %>
+      </div>
+      <div class="tab-pane fade" id="sent">
+      	<% if !@sent_messages.empty? %>
+	        <% @sent_messages.each do |message| %>
+	        	<h5><%= User.find(message.to).fullname %></h5>
+	        	<pre><%= message.body %></pre>
+	        <% end %>
+	    <% end %>
+      </div>
+    </div>
+          
 </div>

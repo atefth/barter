@@ -10,5 +10,11 @@ class Good < ActiveRecord::Base
   mount_uploader :image_7, ImageUploader
 
   belongs_to :user
-  has_many :comments
+  has_many :notifications
+  has_many :comments  
+
+  def to_good
+    return "#{brand}#{category}#{model}"
+  end
+
 end

@@ -1,0 +1,24 @@
+<div>
+	<h1>My Buddylist</h1>
+	<div>
+		<h2>My Buddies</h2>
+		<% current_user.buddies.each do |buddy| %>
+			<h4><%= buddy.fullname %></h4>
+		<% end %>
+	</div>
+	<div>
+		<h2>Sent Buddy Requests</h2>
+		<% current_user.sent_buddy_requests.each do |request| %>
+			<h4><%= request.buddy.fullname %></h4>
+		<% end %>
+	</div>
+	<div>
+		<h2>Received Buddy Requests</h2>
+		<% current_user.received_buddy_requests.each do |request| %>
+			<% if request.status == 'pending' %>
+				<h4><%= request.user.fullname %></h4>
+				<a href="/users/accept_buddy/<%= request.id %>">Accept</a>
+			<% end %>
+		<% end %>
+	</div>
+</div>

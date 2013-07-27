@@ -12,29 +12,29 @@
   <% end %>
   <fieldset>
     <legend>Fill in the good's details</legend>
-    <div class="span8" style="margin-left:15%;">
+    <div class="span9" style="margin-left:15%;">
       <div class="input_wrapper">
         <%= f.label :category, :class => 'input_label' %>
         <div class="input">
-          <%= f.text_field :category %>
+          <%= f.text_field :category, :class => 'input' %>
         </div>
       </div>
       <div class="input_wrapper">
         <%= f.label :brand, :class => 'input_label' %>
         <div class="input">
-          <%= f.text_field :brand %>
+          <%= f.text_field :brand, :class => 'input' %>
         </div>
       </div>
       <div class="input_wrapper">
         <%= f.label :model, :class => 'input_label' %>
         <div class="input">
-          <%= f.text_field :model %>
+          <%= f.text_field :model, :class => 'input' %>
         </div>
       </div>
-      <div class="input_wrapper">
-        <%= f.label :description, :class => 'input_label' %>
+      <div class="text_area_input_wrapper">
+        <%= f.label :description, :class => 'text_area_input_label' %>
         <div class="input">
-          <%= f.text_area :description %>
+          <%= f.text_area :description, :class => 'text_area_input' %>
         </div>
       </div>
       <div class="input_wrapper">

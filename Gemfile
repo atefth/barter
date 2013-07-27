@@ -10,6 +10,7 @@ gem 'pg'
 gem 'rmagick'
 gem "carrierwave"
 gem "devise"
+gem 'gmaps4rails'
 
 # Gems used only for assets and not required
 # in production environments by default.

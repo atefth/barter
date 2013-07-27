@@ -37,7 +37,7 @@ config.serve_static_assets = true
   config.action_mailer.smtp_settings = {
     :address => "atefth@gmail.com",
     :port => 25,
-    :domain => "dev-barter.herokuapp.com",
+    :domain => "www.gmail.com",
     :authentication => :login,
     :user_name => "atefth@gmail.com",
     :password => "urzjexvefretsojr",
@@ -46,8 +46,8 @@ config.serve_static_assets = true
   config.assets.compile = true
 
   # Do not compress assets
-  config.assets.compress = true
+  config.assets.compress = false
 
   # Expands the lines which load the assets
-  config.assets.debug = true
+  config.assets.debug = false
 end

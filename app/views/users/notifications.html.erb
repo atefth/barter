@@ -1,0 +1,19 @@
+<div class="span2 logo_bg">
+    <%= image_tag 'logo.png', :style => "margin-top: -15px; height: 225px;" %>
+</div>
+<div class="span2 pp_bg">
+    <%= image_tag current_user.image_url(:thumb).to_s, :class => 'img-circle' %>
+</div>
+<div class="offset2 span8">
+	<h2>My Notifications</h2>
+	<% @notifications.each do |notification| %>
+		<div>
+			<a class="nav-notification-details" href="/users/show/<%= notification.uploader.id%>/"><%= notification.uploader.fullname %></a><%= ' can barter a ' + notification.good.brand + ' ' %><a class="nav-notification-details" href="/goods/show/<%= notification.good.id %>/"><%= notification.good.model %></a>
+		</div>
+	<% end %>
+	<% @notifieds.each do |notification| %>
+		<div>
+			<a class="nav-notification-details" href="/users/show/<%= notification.user.id%>/"><%= notification.user.fullname %></a><%= ' wants a ' + notification.good.brand + ' ' %><a class="nav-notification-details" href="/goods/show/<%= notification.good.id %>/"><%= notification.good.model %></a> and you have one!
+		</div>
+	<% end %>
+</div>

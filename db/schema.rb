@@ -11,13 +11,26 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130708213113) do
+ActiveRecord::Schema.define(:version => 20130727170718) do
 
   create_table "admins", :force => true do |t|
     t.string   "name"
     t.string   "username"
     t.string   "password"
     t.string   "email"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "buddies_users", :force => true do |t|
+    t.integer "user_id"
+    t.integer "buddy_id"
+  end
+
+  create_table "buddy_requests", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "buddy_id"
+    t.string   "status"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -54,6 +67,7 @@ ActiveRecord::Schema.define(:version => 20130708213113) do
     t.integer  "to"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.boolean  "seen"
   end
 
   create_table "needed_goods", :force => true do |t|
@@ -66,6 +80,20 @@ ActiveRecord::Schema.define(:version => 20130708213113) do
     t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.float    "latitude"
+    t.float    "longitude"
+    t.boolean  "gmaps"
+  end
+
+  create_table "notifications", :force => true do |t|
+    t.boolean  "buddies_good_upload"
+    t.boolean  "matched_good"
+    t.boolean  "seen"
+    t.integer  "user_id"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.integer  "good_id"
+    t.integer  "uploader_id"
   end
 
   create_table "users", :force => true do |t|
@@ -91,6 +119,9 @@ ActiveRecord::Schema.define(:version => 20130708213113) do
     t.datetime "remember_created_at"
     t.string   "authentication_token"
     t.string   "fullname"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.boolean  "gmaps"
   end
 
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true

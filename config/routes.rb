@@ -28,6 +28,10 @@ Barter::Application.routes.draw do
 
   get "users/signup"
 
+  get "users/buddies"
+
+  get "users/notifications"
+
   get "assets/images"
 
   resources :users
